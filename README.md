@@ -94,34 +94,6 @@ The function validates the endpoints and handles the case where the start equals
 
 The function reports whether a path was found, no path exists, the endpoints are invalid, or the time limit was reached. This cell reuses the same graph, start node, goal node, and time limit as IDS, measures the search call, and prints its status and results. The combined comparison table has been removed from the notebook; both algorithms retain their individual result summaries.
 
-## Visualizations from the lab report
-
-The following four figures are the original images used in the lab report. They are included as documentation images; the notebook's code cells do not generate them.
-
-### Figure 1 — State-space graph
-
-![Schematic graph showing the route from node 0 through nodes 1 and 6 to node 5, with selected neighboring nodes.](assets/state_space.png)
-
-A small subset of the road network around the demonstration route. The highlighted route is `0 -> 1 -> 6 -> 5`. Other neighbors are omitted for readability. Node placement is schematic, so drawn line lengths do not represent road distance.
-
-### Figure 2 — Search algorithm workflows
-
-![Side-by-side workflows showing increasing depth limits for IDS and two-frontier layer expansion for Bidirectional BFS.](assets/search_workflows.png)
-
-IDS repeats depth-limited searches with increasing limits. Bidirectional BFS searches from both endpoints, chooses the smaller frontier, and reconstructs the route when the searches meet. The figure summarizes the main steps; the code also enforces endpoint validation and search limits.
-
-### Figure 3 — Recorded notebook output
-
-![Lab report output excerpt showing both algorithms returning a three-edge path from node 0 to node 5, with their recorded times and expansion counts.](assets/recorded_output.png)
-
-An excerpt of the saved run used in the lab report. Both algorithms return `0 -> 1 -> 6 -> 5`, a path of three edges. The recorded expansion counts are eight for IDS and three for Bidirectional BFS. The displayed execution times belong to that run and will vary by machine and query; this single example does not establish a general performance ranking.
-
-### Figure 4 — Returned path and expansion trace
-
-![Returned path 0 to 1 to 6 to 5, with IDS expansion iterations separated by vertical bars and Bidirectional BFS expansion order shown below.](assets/route_trace.png)
-
-The route shows the final answer, while the trace shows the search work performed before returning it. Vertical bars separate successive IDS depth iterations, where nodes can be expanded again. The IDS expansion count excludes nodes at the depth boundary and excludes the goal when it is returned without exploring its neighbors. Bidirectional BFS counts expansions from both search directions.
-
 ## Reading the results
 
 - **Status:** whether the search returned a path or stopped because of invalid endpoints, an exhausted frontier, or a resource limit. Reaching a depth or time limit does not prove that no path exists.
